@@ -1,12 +1,11 @@
 ## PATCHES
 
-#### Patches for [CachyOS Kernels](https://github.com/CachyOS/linux-cachyos) and more.
+#### Patches for [CachyOS Kernels](https://github.com/CachyOS/linux-cachyos).
 
-###### Patches developed and offered only for the last, stable line (not EOL and not LTS). 
-###### Active support is offered only for this kernel line. 
-###### Any others are not supported anymore, but you can find patchsets for previous versions of kernel.
+###### Patches are only for the last, stable line (not EOL and not LTS). 
+###### I offer no support. This repository is purely for my own experimentation.
 
-Here are patches reformatted (with `git format-patch` and/or `git diff`) and rebased from: 
+Sources used:
 
 - [CachyOS](https://github.com/CachyOS/linux)
 
@@ -18,13 +17,13 @@ Here are patches reformatted (with `git format-patch` and/or `git diff`) and reb
 
 - [xanmod-linux](https://github.com/xanmod/linux)
 
-- [clearlinux](https://github.com/clearlinux-pkgs/linux)
-
 - [AUFS](https://github.com/sfjro/aufs5-standalone)
 
 - [zstd](https://github.com/facebook/zstd/commits/dev/)
 
 - [firelzrd](https://github.com/firelzrd)
+
+- [The T2 SDE Project](https://svn.exactcode.de/t2/trunk/package/kernel/linux/)
 
 - [Linux Kernel Mailing List Archive](https://lkml.org) / [Linux Kernel Mailing List Archive](https://lore.kernel.org/lkml/) / [Linux Kernel Mailing List Archive](https://patchwork.kernel.org)
 
