@@ -1,0 +1,30 @@
+# --- T2-COPYRIGHT-BEGIN ---
+# t2/package/*/linux/hotfix-radeon-printk.patch
+# Copyright (C) 2024 - 2026 The T2 SDE Project
+# SPDX-License-Identifier: GPL-2.0 or patched project license
+# --- T2-COPYRIGHT-END ---
+
+--- linux-7.0/drivers/gpu/drm/radeon/radeon_display.c.vanilla	2026-04-13 16:02:46.556194903 +0200
++++ linux-7.0/drivers/gpu/drm/radeon/radeon_display.c	2026-04-13 16:03:50.053396227 +0200
+@@ -776,8 +776,7 @@
+ 	drm_info(dev, "Radeon Display Connectors\n");
+ 	list_for_each_entry(connector, &dev->mode_config.connector_list, head) {
+ 		radeon_connector = to_radeon_connector(connector);
+-		drm_info(dev, "Connector %d:\n", i);
+-		drm_info(dev, "  %s\n", connector->name);
++		drm_info(dev, "Connector %d: %s\n", i, connector->name);
+ 		if (radeon_connector->hpd.hpd != RADEON_HPD_NONE)
+ 			drm_info(dev, "  %s\n", hpd_names[radeon_connector->hpd.hpd]);
+ 		if (radeon_connector->ddc_bus) {
+--- linux-6.11/drivers/gpu/drm/radeon/radeon_fbdev.c.vanilla	2024-10-12 12:04:48.241677883 +0200
++++ linux-6.11/drivers/gpu/drm/radeon/radeon_fbdev.c	2024-10-12 12:06:44.695010497 +0200
+@@ -272,8 +272,7 @@
+ 	DRM_INFO("fb mappable at 0x%lX\n",  info->fix.smem_start);
+ 	DRM_INFO("vram apper at 0x%lX\n",  (unsigned long)rdev->mc.aper_base);
+ 	DRM_INFO("size %lu\n", (unsigned long)radeon_bo_size(rbo));
+-	DRM_INFO("fb depth is %d\n", fb->format->depth);
+-	DRM_INFO("   pitch is %d\n", fb->pitches[0]);
++	DRM_INFO("fb depth is %d, pitch is %d\n", fb->format->depth, fb->pitches[0]);
+ 
+ 	return 0;
+ 

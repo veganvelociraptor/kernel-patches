@@ -1,0 +1,17 @@
+# --- T2-COPYRIGHT-BEGIN ---
+# t2/package/*/linux/hotfix-clang-lto.patch.x86
+# Copyright (C) 2023 - 2025 The T2 SDE Project
+# SPDX-License-Identifier: GPL-2.0 or patched project license
+# --- T2-COPYRIGHT-END ---
+
+--- linux-6.15/scripts/Makefile.clang.orig	2025-05-29 20:32:32.523904742 +0200
++++ linux-6.15/scripts/Makefile.clang	2025-05-29 22:50:42.332818653 +0200
+@@ -11,7 +11,7 @@
+ CLANG_TARGET_FLAGS_riscv	:= riscv64-linux-gnu
+ CLANG_TARGET_FLAGS_s390		:= s390x-linux-gnu
+ CLANG_TARGET_FLAGS_sparc	:= sparc64-linux-gnu
+-CLANG_TARGET_FLAGS_x86		:= x86_64-linux-gnu
++CLANG_TARGET_FLAGS_x86		:= i386-linux-gnu
+ # This is only for i386 UM builds, which need the 32-bit target not -m32
+ CLANG_TARGET_FLAGS_i386		:= i386-linux-gnu
+ CLANG_TARGET_FLAGS_um		:= $(CLANG_TARGET_FLAGS_$(SUBARCH))

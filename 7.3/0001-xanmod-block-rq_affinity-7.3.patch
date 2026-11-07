@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Alexandre Frade <kernel@xanmod.org>
+Date: Mon, 14 Dec 2020 16:24:26 +0000
+Subject: [PATCH] block: default rq_affinity to the submitting CPU
+
+XanMod ORed QUEUE_FLAG_SAME_FORCE into QUEUE_FLAG_MQ_DEFAULT so new
+blk-mq queues start with rq_affinity=2: completions run on the CPU
+that submitted the I/O, not merely in its CPU group.
+
+Signed-off-by: Alexandre Frade <kernel@xanmod.org>
+---
+ include/linux/blkdev.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/include/linux/blkdev.h
++++ b/include/linux/blkdev.h
+@@ -682,7 +682,8 @@
+ 	QUEUE_FLAG_MAX
+ };
+ 
+-#define QUEUE_FLAG_MQ_DEFAULT	(1UL << QUEUE_FLAG_SAME_COMP)
++#define QUEUE_FLAG_MQ_DEFAULT	((1UL << QUEUE_FLAG_SAME_COMP) |	\
++				 (1UL << QUEUE_FLAG_SAME_FORCE))
+ 
+ void blk_queue_flag_set(unsigned int flag, struct request_queue *q);
+ void blk_queue_flag_clear(unsigned int flag, struct request_queue *q);
